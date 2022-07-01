@@ -1,0 +1,7 @@
+﻿  main.cpp
+D:\No6_game_16\main.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  player.cpp
+  title.cpp
+D:\No6_game_16\title.cpp(173,9): warning C4477: 'printf' : 書式文字列 '%s' には、型 'char *' の引数が必要ですが、可変個引数 1 は型 'char (*)[24][80]' です
+  コードを生成中...
+  No6_game_16.vcxproj -> D:\No6_game_16\Debug\No6_game_16.exe
