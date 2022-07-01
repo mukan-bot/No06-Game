@@ -19,6 +19,7 @@
 #include "bullet.h"
 #include "enemy.h"
 #include "title.h"
+#include "result.h"
 
 /*******************************************************************************
 * マクロ定義
@@ -71,9 +72,16 @@ void Init(void) {
 	player_Init();
 	bullet_Init();
 	enemy_Init();
+	result_Init();
 	
 }
 void Uninit(void) {
+	title_Uninit();
+	draw_tile_Uninit();
+	player_Uninit();
+	bullet_Uninit();
+	enemy_Uninit();
+	result_Uninit();
 }
 void Update(void) {
 	switch (GetMode()) {
@@ -90,7 +98,8 @@ void Update(void) {
 		break;
 
 	case GAME_RESULT:
-		_getch();
+		result_Update();
+		break;
 	}
 }
 void Draw(void) {
@@ -107,6 +116,7 @@ void Draw(void) {
 		break;
 	
 	case GAME_RESULT:
+		result_Draw();
 		break;
 	}
 }

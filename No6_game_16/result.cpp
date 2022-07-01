@@ -45,6 +45,10 @@ void result_Init(void) {
 void result_Uninit(void) {
 }
 void result_Update(void) {
+	int key = _getch();
+	system("cls");
+	printf("%d\n", key);
+	printf("%d\n", key);
 }
 void result_Draw(void) {
 }

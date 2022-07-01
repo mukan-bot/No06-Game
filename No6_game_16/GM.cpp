@@ -139,10 +139,19 @@ void GM_Update(void) {
 	short* enemy1 = GetEnemy1();
 	short* enemy2 = GetEnemy2();
 	short* enemy3 = GetEnemy3();
-	for (int i = 0; i < ENEMY_MAX;i++) {
+
+	int j = 0;
+	for (int i = 0; i < ENEMY_MAX; i++) {
 		if ((enemy1[i] == 3) || (enemy2[i] == 3) || (enemy3[i] == 3)) {//エネミーのどれかがゲームオーバーラインのところまで進んだらRESULTへ
 			SetMode(GAME_RESULT);
 		}
-	}
+		//jにエネミーのtfの値を足していって０なら全て０だからループの後でRESULTへ
+		j += enemy1[i];
+		j += enemy2[i];
+		j += enemy3[i];
 
+	}
+	if (j == 0) {
+		SetMode(GAME_RESULT);
+	}
 }
