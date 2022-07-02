@@ -46,9 +46,37 @@ void result_Uninit(void) {
 }
 void result_Update(void) {
 	int key = _getch();
-	system("cls");
+	
 	printf("%d\n", key);
-	printf("%d\n", key);
+	if (key == 27) {
+		SetMode(GAME_END);
+	}
 }
 void result_Draw(void) {
+	system("cls");
+	printf("a\n");
+	printf("\n");
+	printf("\n");
+	printf("\n");
+	printf("\n");
+	printf("\n");
+	printf("\n");
+	printf("\n");
+	printf("\n");
+	printf("\n");
+	printf("\n");
+	printf("\n");
+	printf("\n");
+	printf("\n");
+	printf("\n");
+	printf("\n");
+	printf("\n");
+	printf("\n");
+	printf("\n");
+	printf("\n");
+	printf("\n");
+	printf("\n");
+	printf("\n");
+	printf("\n");
+	printf("a");
 }

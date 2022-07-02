@@ -394,6 +394,14 @@ void enemy_Move() {
 				minus_map(0, enemy_3[no]);
 			}
 
+			//‚æ‚­‚í‚©‚ç‚È‚¢‚¯‚Çenemy_3[0].tile[4][3]‚É‚R‚ª‘ã“ü‚³‚ê‚éƒoƒO‚ğ–³—‚â‚è‰ğŒˆ‚µ‚Ä‚é
+			if (no == 0) {
+				for (int i = 0; i < TILE_SIZE; i++) {
+					for (int j = 0; j < TILE_SIZE; j++) {
+						enemy_3[no].tile[i][j] = g_enemy_3_tile[i][j];
+					}
+				}
+			}
 			plus_map(enemy_3[no]);
 
 			enemy_3[no].old_Position.x = enemy_3[no].Position.x;
