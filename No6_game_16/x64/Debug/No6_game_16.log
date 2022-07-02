@@ -1,2 +1,9 @@
-﻿  result.cpp
+﻿  enemy.cpp
+C:\Users\mukan\Documents\GitHub\GP11-No06-Game\No6_game_16\enemy.cpp(122,17): warning C4244: '=': 'time_t' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\mukan\Documents\GitHub\GP11-No06-Game\No6_game_16\enemy.cpp(206,21): warning C4244: '=': 'time_t' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\mukan\Documents\GitHub\GP11-No06-Game\No6_game_16\enemy.cpp(210,21): warning C4244: '=': 'time_t' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\mukan\Documents\GitHub\GP11-No06-Game\No6_game_16\enemy.cpp(221,21): warning C4244: '=': 'time_t' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\mukan\Documents\GitHub\GP11-No06-Game\No6_game_16\enemy.cpp(225,21): warning C4244: '=': 'time_t' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\mukan\Documents\GitHub\GP11-No06-Game\No6_game_16\enemy.cpp(235,21): warning C4244: '=': 'time_t' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\mukan\Documents\GitHub\GP11-No06-Game\No6_game_16\enemy.cpp(239,21): warning C4244: '=': 'time_t' から 'int' への変換です。データが失われる可能性があります。
   No6_game_16.vcxproj -> C:\Users\mukan\Documents\GitHub\GP11-No06-Game\No6_game_16\x64\Debug\No6_game_16.exe

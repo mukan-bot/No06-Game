@@ -47,9 +47,9 @@ int enemy_1_score = 300;
 int enemy_2_score = 200;
 int enemy_3_score = 100;
 
-short enemy_1_tf[ENEMY_MAX];//0はスリープ１はアクティブ
-short enemy_2_tf[ENEMY_MAX];//0はスリープ１はアクティブ
-short enemy_3_tf[ENEMY_MAX];//0はスリープ１はアクティブ
+//short enemy_1_tf[ENEMY_MAX];//0はスリープ１はアクティブ
+//short enemy_2_tf[ENEMY_MAX];//0はスリープ１はアクティブ
+//short enemy_3_tf[ENEMY_MAX];//0はスリープ１はアクティブ
 short g_enemy_1_tile[TILE_SIZE][TILE_SIZE] = {
 		{0,5,0,0,0,},
 		{5,5,0,0,0,},
@@ -84,7 +84,7 @@ short g_enemy_3_tile[TILE_SIZE][TILE_SIZE] = {
 void enemy_Init(void) {
 	//エネミー１
 	for (int no = 0; no < ENEMY_MAX; no++) {
-		enemy_1_tf[no] = 1;//全てのenemy_1を表示するようにする
+		enemy_1[no].tf = 1;//全てのenemy_1を表示するようにする
 		for (int i = 0; i < TILE_SIZE; i++) {
 			for (int j = 0; j < TILE_SIZE; j++) {
 				enemy_1[no].tile[i][j] = g_enemy_1_tile[i][j];
@@ -96,7 +96,7 @@ void enemy_Init(void) {
 	}
 	//エネミー２
 	for (int no = 0; no < ENEMY_MAX; no++) {
-		enemy_2_tf[no] = 1;//全てのenemy_1を表示するようにする
+		enemy_2[no].tf = 1;//全てのenemy_1を表示するようにする
 		for (int i = 0; i < TILE_SIZE; i++) {
 			for (int j = 0; j < TILE_SIZE; j++) {
 				enemy_2[no].tile[i][j] = g_enemy_2_tile[i][j];
@@ -108,7 +108,7 @@ void enemy_Init(void) {
 	}
 	//エネミー３
 	for (int no = 0; no < ENEMY_MAX; no++) {
-		enemy_3_tf[no] = 1;//全てのenemy_1を表示するようにする
+		enemy_3[no].tf = 1;//全てのenemy_1を表示するようにする
 		for (int i = 0; i < TILE_SIZE; i++) {
 			for (int j = 0; j < TILE_SIZE; j++) {
 				enemy_3[no].tile[i][j] = g_enemy_3_tile[i][j];
@@ -130,30 +130,31 @@ void enemy_Uninit(void) {
 void enemy_Update(void) {
 	//エネミー１
 	for (int no = 0; no <= ENEMY_MAX; no++) {
-		if (enemy_1_tf[no] == 1) {
-			//当たり判定
+		if (enemy_1[no].tf == 1) {
+			//弾との当たり判定
 			POSITION temp_Position[3];//判定を行う場所の数
 			for (short i = 0; i < 3; i++) {
 				temp_Position[i].x = enemy_1[no].Position.x;
 				temp_Position[i].y = enemy_1[no].Position.y + i;
 				if (GetMap_Position(temp_Position[i]) == 3) {//弾の判定が３
-					bullet_set(2);
-					enemy_1_tf[no] = 0;
+					bullet_set(2);//弾を消す
+					enemy_1[no].tf = 0;
 					minus_map(0, enemy_1[no]);
 					SetScore(SCORE_PLUS, enemy_1_score + (enemy_1[no].Position.x - 30) * 5);
 					break;
 				}
 			}
 		}
+		//ゲームオーバーラインを超えたか
 		if (enemy_1[no].Position.x - 1 <= GAME_OVER) {
-			enemy_1_tf[no] = 3;
+			enemy_1[no].tf = 3;
 			}
 
 	}
 
 	//エネミー２
 	for (int no = 0; no <= ENEMY_MAX; no++) {
-		if (enemy_2_tf[no] == 1) {
+		if (enemy_2[no].tf == 1) {
 			//弾との当たり判定
 			POSITION temp_Position[3];//判定を行う場所の数
 			for (short i = 0; i < 3; i++) {
@@ -161,20 +162,21 @@ void enemy_Update(void) {
 				temp_Position[i].y = enemy_2[no].Position.y + i;
 				if (GetMap_Position(temp_Position[i]) == 3) {//弾の判定が３
 					bullet_set(2);
-					enemy_2_tf[no] = 0;
+					enemy_2[no].tf = 0;
 					minus_map(0, enemy_2[no]);
 					SetScore(SCORE_PLUS, enemy_2_score + (enemy_2[no].Position.x - 25) * 5);
 					break;
 				}
 			}
 		}
+		//ゲームオーバーラインを超えたか
 		if (enemy_2[no].Position.x - 1 <= GAME_OVER) {
-			enemy_2_tf[no] = 3;
+			enemy_2[no].tf = 3;
 		}
 	}
 	//エネミー3
 	for (int no = 0; no <= ENEMY_MAX; no++) {
-		if (enemy_3_tf[no] == 1) {
+		if (enemy_3[no].tf == 1) {
 			//弾との当たり判定
 			POSITION temp_Position[3];//判定を行う場所の数
 			for (short i = 0; i < 3; i++) {
@@ -182,7 +184,7 @@ void enemy_Update(void) {
 				temp_Position[i].y = enemy_3[no].Position.y + i;
 				if (GetMap_Position(temp_Position[i]) == 3) {//弾の判定が３
 					bullet_set(2);
-					enemy_3_tf[no] = 0;
+					enemy_3[no].tf = 0;
 					minus_map(0, enemy_3[no]);
 					SetScore(SCORE_PLUS, enemy_3_score + -((enemy_3[no].Position.x - 20) * 5));
 					break;
@@ -190,15 +192,15 @@ void enemy_Update(void) {
 			}
 		}
 		if (enemy_3[no].Position.x - 1 == GAME_OVER) {
-			enemy_3_tf[no] = 3;
+			enemy_3[no].tf = 3;
 		}
 	}
 
-
+	//移動-------------------------------------
 	if (old_time == time(NULL) - 1) {
 		//エネミー１
 		for (int no = 0; no < ENEMY_MAX; no++) {
-			if (enemy_1_tf[no] == 1) {
+			if (enemy_1[no].tf == 1) {
 
 				if (GetEnemy_ud() == 'd') {
 					old_time = time(NULL);
@@ -213,7 +215,7 @@ void enemy_Update(void) {
 
 		//エネミー２
 		for (int no = 0; no < ENEMY_MAX; no++) {
-			if (enemy_2_tf[no] == 1) {
+			if (enemy_2[no].tf == 1) {
 
 				if (GetEnemy_ud() == 'd') {
 					old_time = time(NULL);
@@ -227,7 +229,7 @@ void enemy_Update(void) {
 		}
 		//エネミー３
 		for (int no = 0; no < ENEMY_MAX; no++) {
-			if (enemy_3_tf[no] == 1) {
+			if (enemy_3[no].tf == 1) {
 
 				if (GetEnemy_ud() == 'd') {
 					old_time = time(NULL);
@@ -241,6 +243,7 @@ void enemy_Update(void) {
 		}
 	}
 	enemy_Move();
+
 }
 
 
@@ -261,7 +264,7 @@ void enemy_Draw(void) {
 void enemy_Move() {
 	//エネミー１
 	for (int no = 0; no < ENEMY_MAX; no++) {
-		if (enemy_1_tf[no] == 1) {
+		if (enemy_1[no].tf == 1) {
 			if (enemy_1[no].Position.y < 1) {
 				for (int no1 = 0; no1 < ENEMY_MAX; no1++) {
 					enemy_1[no1].Position.y += 1;
@@ -309,7 +312,7 @@ void enemy_Move() {
 
 	//エネミー２
 	for (int no = 0; no < ENEMY_MAX; no++) {
-		if (enemy_2_tf[no] == 1) {
+		if (enemy_2[no].tf == 1) {
 			if (enemy_2[no].Position.y < 1) {
 				for (int no1 = 0; no1 < ENEMY_MAX; no1++) {
 					enemy_2[no1].Position.y += 1;
@@ -350,7 +353,7 @@ void enemy_Move() {
 	}
 	//エネミー３
 	for (int no = 0; no < ENEMY_MAX; no++) {
-		if (enemy_3_tf[no] == 1) {
+		if (enemy_3[no].tf == 1) {
 			if (enemy_3[no].Position.y < 1) {
 				for (int no1 = 0; no1 < ENEMY_MAX; no1++) {
 					enemy_3[no1].Position.y += 1;
@@ -399,12 +402,12 @@ void enemy_Move() {
 	}
 }
 
-short* GetEnemy1() {
-	return enemy_1_tf;
+OBJ* GetEnemy1() {
+	return enemy_1;
 }
-short* GetEnemy2() {
-	return enemy_2_tf;
+OBJ* GetEnemy2() {
+	return enemy_2;
 }
-short* GetEnemy3() {
-	return enemy_3_tf;
+OBJ* GetEnemy3() {
+	return enemy_3;
 }

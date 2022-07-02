@@ -64,6 +64,7 @@ struct OBJ
 		{1,1,1,1,1,},
 		{1,1,1,1,1,},
 	};
+	short tf = 1;
 	char name[256];
 };
 

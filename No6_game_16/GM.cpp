@@ -136,19 +136,19 @@ void SetEnemy_ud(char enemy) {
  説明　:	エネミーとプレイヤーの監視
 *******************************************************************************/
 void GM_Update(void) {
-	short* enemy1 = GetEnemy1();
-	short* enemy2 = GetEnemy2();
-	short* enemy3 = GetEnemy3();
+	OBJ* enemy1 = GetEnemy1();
+	OBJ* enemy2 = GetEnemy2();
+	OBJ* enemy3 = GetEnemy3();
 
 	int j = 0;
 	for (int i = 0; i < ENEMY_MAX; i++) {
-		if ((enemy1[i] == 3) || (enemy2[i] == 3) || (enemy3[i] == 3)) {//エネミーのどれかがゲームオーバーラインのところまで進んだらRESULTへ
+		if ((enemy1[i].tf == 3) || (enemy2[i].tf == 3) || (enemy3[i].tf == 3)) {//エネミーのどれかがゲームオーバーラインのところまで進んだらRESULTへ
 			SetMode(GAME_RESULT);
 		}
 		//jにエネミーのtfの値を足していって０なら全て０だからループの後でRESULTへ
-		j += enemy1[i];
-		j += enemy2[i];
-		j += enemy3[i];
+		j += enemy1[i].tf;
+		j += enemy2[i].tf;
+		j += enemy3[i].tf;
 
 	}
 	if (j == 0) {
