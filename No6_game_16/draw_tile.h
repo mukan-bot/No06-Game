@@ -40,8 +40,10 @@ void draw_tile_Init(void);
 void draw_tile_Uninit(void);
 void draw_tile_Update(void);
 void draw_tile_Draw(void);
+
 void plus_map(OBJ obj);
 void minus_map(short maptip, OBJ obj);
+void ResetMap();
 
 short GetMap_Position(POSITION Position);
 

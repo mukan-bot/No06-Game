@@ -118,50 +118,28 @@ short g_number_tile[10][TILE_SIZE][TILE_SIZE] = {
 	},
 };
 /*******************************************************************************
-* void title_Init(void)
-* draw_title‚Ì‰Šú‰»
-* g_title‚ğ‚O‚Å–„‚ß‚é
+* void result_Init(void)
+* result_Init‚Ì‰Šú‰»
+* g_number.tile‚Ég_numer_tile‚ğƒRƒs[
 *******************************************************************************/
 void result_Init(void) {
-	for (int i = 0; i < 10; i++) {
-		g_number[i].tile = g_number_tile[i];
+	for (int no = 0; no < 10; no++) {//0`‚X‚Ü‚Å‚P‚O‰ñƒ‹[ƒv
+		for (int i = 0; i < TILE_SIZE; i++) {
+			for (int j = 0; j < TILE_SIZE; j++) {
+				g_number[no].tile[i][j] = g_number_tile[no][i][j];
+			}
+		}
+		g_number[no].Position.x = 5;
+
 	}
+	ResetMap();
 }
 void result_Uninit(void) {
 }
 void result_Update(void) {
-	int key = _getch();
+	int score = GetScore();
+
 	
-	printf("%d\n", key);
-	if (key == 27) {
-		SetMode(GAME_END);
-	}
 }
 void result_Draw(void) {
-	system("cls");
-	printf("a\n");
-	printf("\n");
-	printf("\n");
-	printf("\n");
-	printf("\n");
-	printf("\n");
-	printf("\n");
-	printf("\n");
-	printf("\n");
-	printf("\n");
-	printf("\n");
-	printf("\n");
-	printf("\n");
-	printf("\n");
-	printf("\n");
-	printf("\n");
-	printf("\n");
-	printf("\n");
-	printf("\n");
-	printf("\n");
-	printf("\n");
-	printf("\n");
-	printf("\n");
-	printf("\n");
-	printf("a");
 }

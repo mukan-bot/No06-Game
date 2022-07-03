@@ -72,7 +72,6 @@ void Init(void) {
 	player_Init();
 	bullet_Init();
 	enemy_Init();
-	result_Init();
 	
 }
 void Uninit(void) {
