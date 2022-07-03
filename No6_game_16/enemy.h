@@ -44,6 +44,6 @@ void enemy_Draw(void);
 
 void enemy_Move(void);
 
-short* GetEnemy1();
-short* GetEnemy2();
-short* GetEnemy3();
+OBJ* GetEnemy1();
+OBJ* GetEnemy2();
+OBJ* GetEnemy3();

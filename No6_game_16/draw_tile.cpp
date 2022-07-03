@@ -70,7 +70,18 @@ void minus_map(short maptip,OBJ obj) {
 	}
 }
 
-
+/*******************************************************************************
+* void ResetMap()
+* 0で埋める
+* 表示されるtileを全て消す
+*******************************************************************************/
+void ResetMap() {
+	for (int i = 0; i <= DISP_H; i++) {
+		for (int j = 0; j < DISP_W / 2; j++) {//DISP_Wは半角の文字数だから全角の数にするために割る２
+			g_map[i][j] = 0;
+		}
+	}
+}
 
 /*******************************************************************************
 * void draw_tile_Init(void)
@@ -108,7 +119,6 @@ void draw_tile_Uninit(void) {
 void draw_tile_Update(void) {
 	for (int i = 0; i <= DISP_H; i++) {
 		for (int j = 0; j < DISP_W / 2; j++) { 
-			
 			if (i == 0) {//二行目にスコア表示欄とゲーム画面を分けるための線の描画
 				g_map[i][j] = 1;
 			}
@@ -130,7 +140,12 @@ void draw_tile_Update(void) {
 *******************************************************************************/
 void draw_tile_Draw(void) {
 	system("cls");
-	printf("SCORE:%d", GetScore());
+	if (GetMode() == GAME_RESULT) {
+		printf("終了する：ESC　　もう一回プレイする：ENTER");
+	}
+	else {
+		printf("SCORE:%d", GetScore());
+	}
 	printf("\n%s", &g_map_char);
 	
 }

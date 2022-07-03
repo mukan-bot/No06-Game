@@ -39,7 +39,6 @@
 /*******************************************************************************
 * グローバル変数
 *******************************************************************************/
-//int g_Mode = GAME_MODE;		// 現在動作している状態（ゲームモード）
 
 /*******************************************************************************
  関数名:	int main( void )
@@ -50,7 +49,7 @@
 int main( void )
 {
 	Init();			// ゲーム全体の初期化処理
-
+	Sleep(200);     //開始時のちらつき防止（完璧ではない）
 	// ゲームモードが終了じゃない間、永久に繰り返す
 	while (GetMode() < GAME_END)
 	{
@@ -72,7 +71,6 @@ void Init(void) {
 	player_Init();
 	bullet_Init();
 	enemy_Init();
-	result_Init();
 	
 }
 void Uninit(void) {
@@ -99,6 +97,7 @@ void Update(void) {
 
 	case GAME_RESULT:
 		result_Update();
+		draw_tile_Update();
 		break;
 	}
 }
@@ -117,6 +116,7 @@ void Draw(void) {
 	
 	case GAME_RESULT:
 		result_Draw();
+		draw_tile_Draw();
 		break;
 	}
 }
