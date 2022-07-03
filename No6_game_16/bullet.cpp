@@ -68,6 +68,10 @@ void bullet_Uninit(void) {
 
 void bullet_set(short tf){//バレットの有効化
 	bullet_tf = tf;
+	if (tf == 2) {
+		player_ad = GetPlayer();
+		bullet.Position = player_ad->Position;
+	}
 }
 
 void bullet_Update(void) {

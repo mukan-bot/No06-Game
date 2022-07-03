@@ -16,6 +16,7 @@
 #include "main.h"
 #include "result.h"
 #include "draw_tile.h"
+#include "bullet.h"
 /*******************************************************************************
 * マクロ定義
 *******************************************************************************/
@@ -188,11 +189,6 @@ void result_Init(void) {
 		g_number[no].Position.y = 12;
 	}
 	ResetMap();
-
-}
-void result_Uninit(void) {
-}
-void result_Update(void) {
 	//スコアの表示
 	int score = GetScore();
 	for (int no = 0; no < 4; no++) {//おそらく4桁の点数が最大だから四回ループ
@@ -217,6 +213,12 @@ void result_Update(void) {
 		g_score_text[no].Position.x = 6;
 	}
 
+}
+void result_Uninit(void) {
+}
+
+void result_Update(void) {
+
 
 	if (_kbhit() == 0) { // Key入力がない？
 	// Key入力がないからここでリターンする
@@ -233,6 +235,7 @@ void result_Update(void) {
 		SetMode(GAME_TITLE);
 		ResetMap();
 		SetScore(SCORE_ZERO, 0);
+		bullet_set(2);
 		break;
 	default:
 		//ResetMap();

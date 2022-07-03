@@ -1,3 +1,4 @@
-﻿  main.cpp
-C:\Users\mukan\Documents\GitHub\GP11-No06-Game\No6_game_16\main.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+﻿  bullet.cpp
+  result.cpp
+  コードを生成中...
   No6_game_16.vcxproj -> C:\Users\mukan\Documents\GitHub\GP11-No06-Game\No6_game_16\Debug\No6_game_16.exe
