@@ -119,7 +119,6 @@ void draw_tile_Uninit(void) {
 void draw_tile_Update(void) {
 	for (int i = 0; i <= DISP_H; i++) {
 		for (int j = 0; j < DISP_W / 2; j++) { 
-			
 			if (i == 0) {//二行目にスコア表示欄とゲーム画面を分けるための線の描画
 				g_map[i][j] = 1;
 			}
@@ -141,7 +140,12 @@ void draw_tile_Update(void) {
 *******************************************************************************/
 void draw_tile_Draw(void) {
 	system("cls");
-	printf("SCORE:%d", GetScore());
+	if (GetMode() == GAME_RESULT) {
+		printf("終了する：ESC　　もう一回プレイする：ENTER");
+	}
+	else {
+		printf("SCORE:%d", GetScore());
+	}
 	printf("\n%s", &g_map_char);
 	
 }
