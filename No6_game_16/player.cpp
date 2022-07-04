@@ -14,6 +14,7 @@
 * インクルードファイル
 *******************************************************************************/
 #include "main.h"
+
 #include "draw_tile.h"
 #include "player.h"
 #include "bullet.h"
