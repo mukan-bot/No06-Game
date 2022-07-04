@@ -166,11 +166,12 @@ short text[5][TILE_SIZE][TILE_SIZE]{
 
 /*******************************************************************************
 * void result_Init(void)
-* result_Initの初期化
+* g_score_text.tileにg_
 * g_number.tileにg_numer_tileをコピー
+* SCOREと点数の表示
 *******************************************************************************/
 void result_Init(void) {
-	for (int no = 0; no < 5; no++) {//文字数
+	for (int no = 0; no < 5; no++) {//文字数分ループ
 		for (int i = 0; i < TILE_SIZE; i++) {
 			for (int j = 0; j < TILE_SIZE; j++) {
 				g_score_text[no].tile[i][j] = text[no][i][j];
@@ -189,6 +190,7 @@ void result_Init(void) {
 		g_number[no].Position.y = 12;
 	}
 	ResetMap();
+	//画面が動かないからここでOK
 	//スコアの表示
 	int score = GetScore();
 	for (int no = 0; no < 4; no++) {//おそらく4桁の点数が最大だから四回ループ
@@ -214,11 +216,17 @@ void result_Init(void) {
 	}
 	
 }
+/*******************************************************************************
+* void result_Uninit(void)
+* 特になし
+*******************************************************************************/
 void result_Uninit(void) {
 }
-
+/*******************************************************************************
+* void result_Update(void)
+* キー入力の確認
+*******************************************************************************/
 void result_Update(void) {
-
 	if (_kbhit() == 0) { // Key入力がない？
 	// Key入力がないからここでリターンする
 		Sleep(1);
@@ -231,13 +239,13 @@ void result_Update(void) {
 		SetMode(GAME_END);
 		break;
 	case(13):
+		//もう一回ゲームをするために色々初期化
 		SetMode(GAME_TITLE);
 		ResetMap();
 		SetScore(SCORE_ZERO, 0);
 		bullet_set(2);
 		break;
 	default:
-		//ResetMap();
 		break;
 	}
 }
