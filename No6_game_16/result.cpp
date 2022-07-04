@@ -212,13 +212,12 @@ void result_Init(void) {
 	for (int no = 0; no < 5; no++) {
 		g_score_text[no].Position.x = 6;
 	}
-
+	
 }
 void result_Uninit(void) {
 }
 
 void result_Update(void) {
-
 
 	if (_kbhit() == 0) { // Key“ü—Í‚ª‚È‚¢H
 	// Key“ü—Í‚ª‚È‚¢‚©‚ç‚±‚±‚ÅƒŠƒ^[ƒ“‚·‚é

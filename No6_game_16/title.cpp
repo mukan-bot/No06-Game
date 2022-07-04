@@ -148,7 +148,6 @@ void title_Uninit(void) {
 }
 void title_Update(void) {
 
-
 	if (_kbhit() == 0) { // Key“ü—Í‚ª‚È‚¢H
 	// Key“ü—Í‚ª‚È‚¢‚©‚ç‚±‚±‚ÅƒŠƒ^[ƒ“‚·‚é
 		Sleep(1);
